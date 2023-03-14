@@ -16,3 +16,67 @@ img {
   display: block;
   max-width: 100%;
 }
+
+button {
+  display: inline-block;
+  text-align: center;
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+  border-color: transparent;
+  border: 2px solid;
+  border-radius: 10px;
+}
+
+button[data-start],
+button[data-stop] {
+  width: 150px;
+  font-size: 30px;
+}
+input[type='text'] {
+  margin-bottom: 2px;
+  border: 3px solid orange;
+  border-radius: 3px;
+  background: #ffb866;
+  outline: none;
+  height: 64px;
+  width: 250px;
+  color: #ffffff;
+  font-size: 24px;
+  font-family: Tahoma;
+}
+
+.timer {
+  display: flex;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 60px;
+  box-shadow: 10px 6px 8px 5px rgba(241, 190, 21, 0.2);
+  /* border: 2px solid orange; */
+}
+.field:nth-child(-n + 3) {
+  margin-right: 5px;
+}
+.timer .value {
+  border-radius: 25%;
+  background-color: orange;
+  font-size: 32px;
+  font-family: Tahoma;
+  color: white;
+  text-align: center;
+}
+.timer .label {
+  border-radius: 25%;
+  background-color: orange;
+  font-size: 16px;
+  font-family: Tahoma;
+  color: white;
+  text-align: center;
+}
+
+/* #datetime-picker {
+  font-size: 50px;
+  width: 400px;
+} */

@@ -4,6 +4,8 @@ import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
+require('flatpickr/dist/themes/confetti.css');
+
 const refs = {
   startBtn: document.querySelector('button[data-start]'),
   daysValue: document.querySelector('.value[data-days]'),
@@ -38,6 +40,7 @@ function handleStartTimer() {
     const deltaTime = selectedData - currentTime;
     // const { days, hours, minutes, seconds } = convertMs(deltaTime);
     const time = convertMs(deltaTime);
+    refs.startBtn.disabled = true;
     updateClockface(time);
   }, 1000);
 }
@@ -73,6 +76,20 @@ function updateClockface({ days, hours, minutes, seconds }) {
   refs.hoursValue.textContent = `${hours}`;
   refs.minutesValue.textContent = `${minutes}`;
   refs.secondsValue.textContent = `${seconds}`;
+  console.log(days, hours, minutes, seconds);
+
+  if (days === '00' && hours === '00' && minutes === '00' && seconds === '00') {
+    handleFinishTimer();
+    Notiflix.Loading.custom('Time to up. Click to continue', {
+      clickToClose: true,
+      customSvgUrl:
+        'https://notiflix.github.io/content/media/loading/notiflix-loading-nx-light.svg',
+    });
+    // Notiflix.Report.info('Title', 'Message', 'Button Text', {
+    //   width: '360px',
+    //   svgSize: '120px',
+    // });
+  }
 }
 
 function addLeadingZero(value) {
