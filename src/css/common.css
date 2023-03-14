@@ -80,3 +80,26 @@ input[type='text'] {
   font-size: 50px;
   width: 400px;
 } */
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  cursor: default;
+}
+
+/* .form {
+  display: flex;
+  flex-direction: column;
+} */
+input[type='number'] {
+  border: 1px solid orange;
+  width: 200px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 3px;
+}
+button[type='submit'] {
+  width: 200px;
+  font-size: 16px;
+}
