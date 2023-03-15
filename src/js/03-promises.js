@@ -11,6 +11,14 @@ function handleFormSubmit(e) {
   let delay = parseInt(delayValue.value);
   const step = parseInt(stepValue.value);
   const amount = parseInt(amountValue.value);
+  if (delay < 0 || step < 0 || amount <= 0) {
+    Notiflix.Report.failure(
+      'Incorrect value',
+      'Enter correct values',
+      'Continue'
+    );
+    return;
+  }
   for (let i = 1; i <= amount; i++) {
     createPromise(i, delay)
       .then(result => Notiflix.Notify.success(result))
