@@ -41,10 +41,19 @@ function handleStartTimer() {
     // const { days, hours, minutes, seconds } = convertMs(deltaTime);
     const time = convertMs(deltaTime);
     refs.startBtn.disabled = true;
+    if (selectedData <= Date.now()) {
+      handleFinishTimer();
+      return;
+    }
     updateClockface(time);
   }, 1000);
 }
 function handleFinishTimer() {
+  Notiflix.Loading.custom('Time to up. Click to continue', {
+    clickToClose: true,
+    customSvgUrl:
+      'https://notiflix.github.io/content/media/loading/notiflix-loading-nx-light.svg',
+  });
   clearInterval(timerId);
 }
 
@@ -77,19 +86,6 @@ function updateClockface({ days, hours, minutes, seconds }) {
   refs.minutesValue.textContent = `${minutes}`;
   refs.secondsValue.textContent = `${seconds}`;
   console.log(days, hours, minutes, seconds);
-
-  if (days === '00' && hours === '00' && minutes === '00' && seconds === '00') {
-    handleFinishTimer();
-    Notiflix.Loading.custom('Time to up. Click to continue', {
-      clickToClose: true,
-      customSvgUrl:
-        'https://notiflix.github.io/content/media/loading/notiflix-loading-nx-light.svg',
-    });
-    // Notiflix.Report.info('Title', 'Message', 'Button Text', {
-    //   width: '360px',
-    //   svgSize: '120px',
-    // });
-  }
 }
 
 function addLeadingZero(value) {
